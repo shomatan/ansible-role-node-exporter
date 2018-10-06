@@ -1,2 +1,14 @@
 ---
-# tasks file for node-exporter
+- name: Add prometheus repository
+  shell: yum-config-manager --add-repo https://copr.fedorainfracloud.org/coprs/ibotty/prometheus-exporters/repo/epel-7/ibotty-prometheus-exporters-epel-7.repo
+  args:
+    chdir: /etc/yum.repos.d
+    creates: ibotty-prometheus-exporters.repo
+
+- name: Ensure node-exporeter is installed.
+  yum:
+    name: node_exporter
+    state: latest
+
+- name: Ensure node-exporeter is started and enabled to start at boot.
+  service: name=node_exporter state=started enabled=yes
