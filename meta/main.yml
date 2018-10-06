@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: node-exporter
   author: Shoma Nishitateno
   description: Installs Prometheus node-exporter
   company: Soften Inc.
